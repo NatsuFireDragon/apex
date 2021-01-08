@@ -1,0 +1,1116 @@
+// @import 'variables';
+// @import 'mediaQueries';
+// @import 'mixins';
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+html, body {
+  font-family: 'Open Sans', sans-serif !important;
+  font-weight: 400;
+  font-size: 1em;
+  line-height: 1.2;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Source Sans Pro', sans-serif !important; 
+  color: $darkBlue;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+// MIXINS **************
+@mixin button-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  @include lg {
+    width: 80%;
+  }
+}
+
+@mixin button {
+  border-radius: 50px;
+  padding: 9px 10px;
+  border: 2px solid $purple;
+  min-width: 125px;
+  @include sm-land {
+    min-width: 110px;
+  }
+  @include md {
+    min-width: 130px;
+  }
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+}
+
+@mixin paragraph {
+  color: $darkBlue;
+  margin: 12px 0;
+  font-size: .9rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+@mixin section-margin {
+  margin: 30px 0;
+  @include md {
+    margin: 50px 0;
+  }
+}
+
+@mixin icon {
+  font-family: "Font Awesome 5 Free";
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 900;
+}
+
+
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 565px;
+
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+
+// Tablets and small desktops
+$screen-lg-min: 992px;
+
+// Large tablets and desktops
+$screen-xl-min: 1200px;
+
+// Small devices
+@mixin sm-land {
+  @media only screen and (min-width: #{$screen-sm-min}) and (orientation: landscape) {
+      @content;
+  }
+}
+
+// Medium devices
+@mixin md {
+  @media only screen and (min-width: #{$screen-md-min}) {
+      @content;
+  }
+}
+
+// Large devices
+@mixin lg {
+  @media only screen and (min-width: #{$screen-lg-min}) {
+      @content;
+  }
+}
+
+// Extra large devices
+@mixin xl {
+  @media only screen and (min-width: #{$screen-xl-min}) {
+      @content;
+  }
+}
+
+// END OF MIXINS **************
+
+// container
+.container {
+  padding: 0 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+  @include sm-land {
+    padding : 0 30px;
+  }
+  @include md {
+    padding: 0 40px;
+  }
+  @include lg {
+    padding: 0 60px;
+  }
+}
+
+.dark-btn {
+  background: $purple;
+  color: $white;
+  font-size: .8rem;
+  letter-spacing: 1px;
+  // Same styling for anchor tag in button
+  a {
+    color: $white;
+    font-size: .8rem;
+    letter-spacing: 1px;
+  }
+}
+.light-btn {
+  background: $white;
+  color: $purple;
+  font-size: .8rem;
+  letter-spacing: 1px;
+  font-weight: 600;
+  // Same styling for anchor tag in button
+  a {
+    color: $purple;
+    font-size: .8rem;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+}
+
+/**********************************
+HEADER
+***********************************/
+header {
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0 40px;
+    @include md {
+      margin: 20px 0 50px;
+    }
+    .logo-box {
+      color: $purple;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      .logo-text {
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 1.9rem;
+        font-weight: 900;
+        margin-right: 5px;
+        @include sm-land {
+          font-size: 2rem;
+        }
+        @include md {
+          font-size: 2.2rem;
+        }
+        @include lg {
+          font-size: 2.4rem;
+        }
+      }
+      .sub-logo-text {
+        font-size: .6rem;
+        font-weight: 700;
+        margin-top: 3px;
+        @include md {
+          font-size: .7rem;
+        }
+      }
+    }
+    .menu-bars {
+      color: $purple;
+      font-size: 1.3rem;
+      @include sm-land {
+        font-size: 1.5rem;
+      }
+      @include md {
+        font-size: 1.7rem;
+      }
+      @include lg {
+        display: none;
+      }
+    }
+    .nav-menu {
+      display: none;
+      @include lg {
+        display: flex;
+        align-items: center;
+      }
+      .nav-list {
+        list-style: none;
+        display: flex;
+        li {
+          margin-right: 20px;
+          font-size: .9rem;
+          font-weight: 600;
+          a {
+            color: $darkBlue;
+          }
+        }
+      }
+      .contact-btn {
+        @include button;
+      }
+    }
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    @include sm-land {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      grid-gap: 20px;
+    }
+    @include md {
+      grid-template-columns: .8fr 1fr;
+      grid-template-rows: 1fr;
+      grid-gap: 20px;
+    }
+    .header-img {
+      width: 100%;
+      margin: 20px 0;
+      @include sm-land {
+        width: 90%;
+      }
+      @include md {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+        margin: 0;
+      }
+    }
+    .info-box {
+      @include sm-land {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        align-self: center;
+      }
+      @include md {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        align-self: center;
+      }
+      h1 {
+        font-size: 1.9rem;
+        font-weight: 900;
+        margin-bottom: 10px;
+        @include sm-land {
+          font-size: 1.7rem;
+        }
+        @include md {
+          font-size: 2.2rem;
+        }
+        @include lg {
+          font-size: 2.5rem;
+        }
+      }
+      p {
+        @include paragraph;
+        @include md {
+          width: 90%;
+        }
+        @include lg {
+          width: 75%;
+        }
+      }
+      .button-box {
+        @include button-box;
+        button {
+          @include button;
+          &.dark-btn {
+            background: $purple;
+            a {
+              color: $white;
+              font-size: .8rem;
+              letter-spacing: 1px;
+            }
+          }
+          &.light-btn {
+            background: $white;
+            a {
+              color: $purple;
+              font-size: .8rem;
+              letter-spacing: 1px;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/**********************************
+BOX CONTAINER
+***********************************/
+.boxes {
+  // margin: 15px 0 0;
+  @include section-margin;
+  @include md {
+    margin: 50px 0;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 10px;
+    @include md {
+      grid-template-columns: repeat(4, .7fr);
+      grid-template-rows: 1fr;
+      grid-gap: 55px;
+    }
+    .box-container {
+      text-align: center;
+      margin: 15px 0 0;
+      .icon {
+        background: $gray;
+        color: $purple;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        @include md {
+          width: 60px;
+          height: 60px;
+          font-size: 1.7rem;
+        }
+      }
+      h3 {
+        font-size: 1rem;
+        margin: 10px 0;
+        @include md {
+          margin: 15px 0;
+        }
+      }
+      p {
+        @include paragraph;
+        @include md {
+          font-size: .8rem;
+        }
+      }
+    }
+  }
+}
+
+/**********************************
+APEX CERT GROWTH
+***********************************/
+.apex-cert-growth {
+  // margin: 15px 0;
+  @include section-margin;
+  @include sm-land {
+    text-align: center;
+  }
+  @include md {
+    text-align: center;
+    margin: 60px auto 0px;
+    width: 80%;
+  }
+  h2 {
+    @include md {
+      font-size: 2rem;
+    }
+    @include lg {
+      font-size: 2.2rem;
+    }
+  }
+  p {
+    @include paragraph;
+    padding-right: 15px;
+  }
+}
+
+/**********************************
+CERT COURSE SECTION
+***********************************/
+.cert-course-section {
+  @include section-margin;
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    @include sm-land {
+      grid-gap: 20px;
+    }
+    .cert-course {
+      margin: 25px 0;
+      display: grid;
+      @include sm-land {
+        text-align: center;
+        margin: 15px 0;
+      }
+      @include md {
+        grid-template-columns: 1fr .8fr;
+        grid-template-rows: 1fr;
+        grid-gap: 20px;
+      }
+      &.plc-course {
+        @include md {
+          grid-template-columns: .8fr 1fr;
+          .course-img {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+          }
+          .course-info {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+          }
+        }
+      }
+      .course-img {
+        @include md {
+          align-self: center;
+        }
+        img {
+          width: 100%;
+          @include sm-land {
+            width: 50%;
+          }
+          @include md {
+            width: 90%;
+          }
+        }
+      }
+      .course-info {
+        color: $purple;
+        @include sm-land {
+          text-align: center;
+        }
+        @include md {
+          text-align: left;
+        }
+        .course-title {
+          font-size: 1.2rem;
+          font-weight: 800;
+          margin: 20px 0;
+          @include md {
+            font-size: 1.3rem;
+          }
+        }
+        .course-length {
+        
+          .course-length-icon {
+            display: inline-flex;
+            align-items: center;
+            border-radius: 5px;
+            background: $gray;
+            padding: 8px 12px;
+            margin-right: 15px;
+            span.length-info {
+              font-family: 'Open Sans', sans-serif !important;
+              margin-left: 8px;
+              font-weight: 700;
+              font-size: .8rem;
+            }
+          }
+        }
+        .course-description {
+          h4 {
+            font-size: .9rem;
+            margin: 12px 0 0;
+          }
+          p {
+            @include paragraph;
+            @include md {
+              font-size: 0.8rem;
+            }
+          }
+        }
+        .button-box {
+          @include button-box;
+          @include sm-land {
+            width: 50%;
+            margin: 0 auto;
+          }
+          @include md {
+            width: 100%;
+          }
+          button {
+            @include button;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+/**********************************
+PRODUCT MANAGEMENT TEST
+***********************************/
+.hide {
+  display: none !important;
+  height: 0px !important; 
+}
+.prod-mang-test {
+  @include section-margin;
+  background: $purple;
+  color: $white;
+  height: 80vh;
+  @include sm-land {
+    height: 100vh;
+  }
+  @include md {
+    // height: 40vh;
+    background: $white;
+    height: 500px;
+  }
+  .grid-container {
+    // Before you start the test view
+    @include md {
+      background: $purple;
+      border-radius: 30px;
+      padding: 30px 30px 0;
+    }
+    .test-splash {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+      height: 80vh;
+      @include sm-land {
+        grid-template-columns: .8fr 1fr;
+        grid-template-rows: 1fr;
+        height: 100vh;
+      }
+      @include md {
+        height: 500px;
+        grid-template-columns: .8fr 1fr;
+        grid-template-rows: 1fr;
+      }
+      .left-col-info {
+        text-align: center;
+        align-self: center;
+        h2 {
+          color: $white;
+          font-weight: 600;
+          margin: 10px 0;
+          font-size: 1.3rem;
+          @include md {
+            font-size: 2rem;
+          }
+        }
+        p {
+          color: $grayPurple;
+          font-size: .8rem;
+          line-height: 1.5;
+          margin: 15px 0;
+          @include md {
+            font-size: 1rem;
+          }
+        }
+        button {
+          @include button;
+        }
+      }
+      .right-col-img {
+        text-align: center;
+        align-self: end;
+        @include md {
+          text-align: right;
+        }
+        img {
+          width: 75%;
+          position: relative;
+          bottom: -4px;
+          @include md {
+            width: 80%;
+          }
+        }
+      }
+    }
+    // End of Test Splash
+    // Start of Pagination container
+    .pagination {
+      height: 80vh;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: .2fr auto;
+      @include sm-land {
+        height: 100vh;
+      }
+      @include md {
+        height: 500px;
+        border-radius: 30px;
+        padding: 0 50px;
+      }
+      .page-list {
+        display: flex;
+        list-style: none;
+        justify-content: space-evenly;
+        align-items: center;
+        margin: 20px 0 0;
+        @include sm-land {
+          margin: 10px 0 0;
+        }
+        .page-num {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: $purple;
+          opacity: .5;
+          font-weight: 600;
+          width: 30px;
+          height: 30px;
+          background: $white;
+          border-radius: 50%;
+          transition: opacity .2s ease-in;
+          &.active {
+            opacity: 1;
+          }
+        }
+      }
+    // Start of Quiz Container
+    .quiz-container{
+      padding: 20px 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr;
+      justify-items: center;
+      align-items: center;
+      grid-gap: 10px; 
+      @include sm-land {
+        padding: 10px 0;
+      }
+      @include md {
+        grid-template-rows: .3fr 1fr;
+      }
+      #question {
+        color: $gray;
+        text-align: center;
+        font-size: 1.2rem;
+        @include sm-land {
+          font-size: 1.1rem;
+        }
+        @include md {
+          font-size: 1.6rem;
+        }
+      }
+      .answer-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-gap: 10px;
+        width: 100%;
+        @include sm-land {
+          width: 75%;
+          grid-gap: 5px;
+        }
+        @include md {
+          width: 70%;
+        }
+        .answer-btn {
+          @include button;
+          background-color: $white;
+          text-align: left;
+          color: $purple;
+          font-weight: 600;
+          transition: all .2s ease-in-out;
+          @include lg {
+            &:hover{
+              background-color: $grayPurple;
+              .letter {
+                background-color: $purple;
+                color: $grayPurple;
+              }
+            }
+          }
+          &:active {
+            background-color: $white;
+            outline: none;
+          }
+          .letter {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+            background-color: $grayPurple;
+            width: 25px !important;
+            height: 25px !important;
+            border-radius: 50%;
+            transition: all .2s ease-in-out;
+            &:active {
+              background-color: $grayPurple;
+              outline: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  .results-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    .name-form {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      grid-gap: 20px;
+      justify-items: center;
+      width: 100%;
+      @include sm-land {
+        grid-gap: 10px;
+      }
+      h2 {
+        color: $white;
+        font-weight: 600;
+        @include md {
+          font-size: 1.6rem;
+        }
+      }
+      .input-name {
+        border-radius: 50px;
+        padding: 9px 10px;
+        border: 2px solid $lightPurple;
+        background-color: #5c2b9c;
+        min-width: 125px;
+        color: $white;
+        width: 80%;
+        @include sm-land {
+          width: 60%;
+        }
+        @include md {
+          padding: 14px 10px;
+          width: 40%;
+        }
+        &:focus {
+          outline: none;
+        }
+      }
+      .next-btn {
+        @include button;
+        width: 40%;
+        @include md {
+          width: 20%;
+        }
+      }
+    }
+    .results {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+      justify-items: center;
+      height: 80vh;
+      @include sm-land {
+        height: 100vh;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+      }
+      @include md {
+        grid-template-columns: .8fr 1fr;
+        grid-template-rows: 1fr;
+        height: 500px;
+      }
+      img {
+        width: 80%;
+        align-self: center;
+        @include md {
+          grid-column: 2/3;
+          grid-row: 1/2;
+        }
+      }
+      .results-box {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        text-align: center;
+        grid-gap: 20px;
+        align-items: center;
+        align-self: center;
+        @include md {
+          grid-column: 1/2;
+          grid-row: 1/2;
+        }
+        h2 {
+          color: $white;
+          @include md {
+            font-size: 1.6rem;
+          }
+          @include lg {
+            font-size: 2rem;
+          }
+        }
+        .name-value {
+          text-transform: capitalize !important;
+          font-weight: 600 !important;
+          @include md {
+            font-size: 1.1rem;
+          }
+          @include lg {
+            font-size: 1.2rem;
+          }
+        }
+        .course-suggestion {
+          font-weight: 700;
+          font-size: 1.1rem;
+          @include md {
+            font-size: 1.3rem;
+            line-height: 1.5;
+          }
+          @include lg {
+            font-size: 1.5rem;
+           }
+          }
+        } // Results-box
+      } // Results
+    } // Results-cont
+  } // Grid-cont
+} //Proj-test
+
+
+/**********************************
+WHY CHOOSE APEX
+***********************************/
+.why-choose-apex {
+  margin: 70px 0;
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    @include md {
+      grid-template-columns: 1fr .8fr;
+      grid-gap: 20px;
+    }
+    .learn-img {
+      @include md {
+        align-self: center;
+      }
+      img {
+        width: 100%;
+      }
+    }
+    .why-us-info {
+      h2 {
+        margin: 20px 0;
+        @include md {
+          font-size: 1.8rem;
+        }
+      }
+      p {
+        @include paragraph;
+      }
+      .why-us-list {
+        text-indent: -20px;
+        li {
+          display: flex;
+          justify-content: flex-start;
+          align-items: flex-start;
+          list-style: none;
+          list-style-position: outside;
+          font-weight: 700;
+          font-size: .8rem;
+          padding: 5px 0;
+          .far {
+            margin: 0 8px 0 20px;
+            color: $purple;
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+/**********************************
+JOIN COMMUNITY 
+***********************************/
+.join-comm {
+  @include section-margin;
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    @include md {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      align-items: center;
+      grid-gap: 20px;
+    }
+    .join-the-comm-col {
+      h2 {
+        @include md {
+          font-size: 1.8rem;
+        }
+      }
+      p {
+        @include paragraph;
+        padding-right: 20px;
+      }
+    }
+    .company-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      grid-gap: 20px;
+      margin: 12px 0;
+      .comp-logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          width: 75%;
+        }
+      }
+    }
+  }
+}
+
+/**********************************
+FAQ ACCORDION
+***********************************/
+.faq-section {
+  @include section-margin;
+  .title {
+    margin: 12px 0;
+    @include md {
+      font-size: 1.8rem;
+    }
+  }
+  .accordion-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    @include md {
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 20px;
+    }
+    .section-img {
+      margin-bottom: 12px;
+      @include md {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+      }
+      img {
+        width: 100%;
+      }
+    }
+    .accordion-col {
+      @include md {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+      }
+      .accordion-item{
+        .acc-btn {
+          border-radius: 50px;
+          padding: 5px;
+          width: 100%;
+          border: 2px solid $lightPurple;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          margin: 10px 0;
+          .icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 10px 0 0;
+            min-width: 30px;
+            min-height: 30px;
+            background-color: $lightPurple;
+            border-radius: 50%;
+            transition: all .4s ease-in;
+            &::before {
+              @include icon;
+              content: "\f067";
+            }
+            // Set icon to minus on aciive
+            &.active {
+              &::before {
+                @include icon;
+                content: "\f068";
+              }
+            }
+          }
+          h4.faq-question {
+            font-weight: 600;
+            font-size: .9rem;
+            color: $darkBlue;
+          }
+        }
+        .panel {
+          @include paragraph;
+          margin: 0 !important;
+          font-size: 0.8rem !important;
+          font-style: italic;
+          border-left: 2px solid #ccc;
+          // padding: 7px 0 7px 15px;
+          padding: 0 15px;
+          text-align: justify;
+          overflow: hidden;
+          max-height: 0;
+          transition: all .4s ease-in;
+        }
+      }
+    }
+  }
+}
+
+
+/**********************************
+FOOTER
+***********************************/
+footer {
+  @include section-margin;
+  .grid-container {
+    background-color: $purple;
+    border-radius: 20px;
+    @include md {
+      display: grid;
+      grid-template-columns: .8fr 1fr;
+      grid-template-rows: 1fr;
+    }
+    .left-col-form {
+      text-align: center; 
+      padding: 20px 10px;
+      h2 {
+        color: $gray;
+      }
+      .form-text {
+        color: $grayPurple;
+        font-size: .85rem;
+        line-height: 1.5;
+        margin: 15px 0;
+      }
+      .contact-form {
+        .contact-input {
+          border-radius: 50px;
+          margin: 5px 0;
+          padding: 15px 20px;
+          border: 2px solid $purple;
+          width: 100%;
+          background-color: $lightPurple;
+          border: none;
+          color: #fff;
+          &:focus {
+            outline: none;
+          }
+          &::placeholder {
+            color: $gray;
+            padding: 5px;
+          }
+        }
+        .submit-btn {
+          @include button;
+          // margin: 15px 0;
+          // background: #fff;
+          // color: $purple;
+          // font-weight: 600;
+        }
+      }
+      .disclaimer {
+        font-size: .8rem;
+        padding: 0 25px;
+        color: $grayPurple;
+        line-height: 1.5;
+        @include md {
+          font-size: .6rem;
+        }
+        a {
+          color: $grayPurple;
+          text-decoration: underline;
+          &:active, :visited {
+            color: $grayPurple;
+          }
+        }
+      }
+    }
+    .right-col-img {
+      @include md {
+        align-self: end;
+      }
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
