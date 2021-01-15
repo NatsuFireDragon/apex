@@ -1,6 +1,5 @@
 @import 'variables';
-// @import 'mediaQueries';
-// @import 'mixins';
+@import 'mixins';
 * {
   margin: 0;
   padding: 0;
@@ -28,99 +27,6 @@ li {
   list-style: none !important;
 }
 
-
-// MIXINS **************
-@mixin button-box {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 20px 0;
-  @include lg {
-    width: 80%;
-  }
-}
-
-@mixin button {
-  border-radius: 50px;
-  padding: 9px 10px;
-  border: 2px solid $purple;
-  min-width: 125px;
-  @include sm-land {
-    min-width: 110px;
-  }
-  @include md {
-    min-width: 130px;
-  }
-  cursor: pointer;
-  &:focus {
-    outline: none;
-  }
-}
-
-@mixin paragraph {
-  color: $darkBlue;
-  margin: 12px 0;
-  font-size: .9rem;
-  font-weight: 600;
-  line-height: 1.5;
-}
-
-@mixin section-margin {
-  margin: 30px 0;
-  @include md {
-    margin: 50px 0;
-  }
-}
-
-@mixin icon {
-  font-family: "Font Awesome 5 Free";
-  color: #fff;
-  font-size: 1.1rem;
-  font-weight: 900;
-}
-
-
-// Small tablets and large smartphones (landscape view)
-$screen-sm-min: 565px;
-
-// Small tablets (portrait view)
-$screen-md-min: 768px;
-
-// Tablets and small desktops
-$screen-lg-min: 992px;
-
-// Large tablets and desktops
-$screen-xl-min: 1200px;
-
-// Small devices
-@mixin sm-land {
-  @media only screen and (min-width: #{$screen-sm-min}) and (orientation: landscape) {
-      @content;
-  }
-}
-
-// Medium devices
-@mixin md {
-  @media only screen and (min-width: #{$screen-md-min}) {
-      @content;
-  }
-}
-
-// Large devices
-@mixin lg {
-  @media only screen and (min-width: #{$screen-lg-min}) {
-      @content;
-  }
-}
-
-// Extra large devices
-@mixin xl {
-  @media only screen and (min-width: #{$screen-xl-min}) {
-      @content;
-  }
-}
-
-// END OF MIXINS **************
 
 // container
 .container {
