@@ -326,7 +326,6 @@ header {
 BOX CONTAINER
 ***********************************/
 .boxes {
-  // margin: 15px 0 0;
   @include section-margin;
   @include md {
     margin: 50px 0;
@@ -381,7 +380,6 @@ BOX CONTAINER
 APEX CERT GROWTH
 ***********************************/
 .apex-cert-growth {
-  // margin: 15px 0;
   @include section-margin;
   @include sm-land {
     text-align: center;
@@ -536,7 +534,6 @@ PRODUCT MANAGEMENT TEST
     height: 100vh;
   }
   @include md {
-    // height: 40vh;
     background: $white;
     height: 500px;
   }
